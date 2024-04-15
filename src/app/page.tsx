@@ -2,12 +2,17 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-15 17:18:58
+ * @LastEditTime: 2024-04-15 17:52:11
  * @description: page
  */
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function Home() {
+
+  console.log('env', process.env.NEXT_PUBLIC_APP_ENV);
+
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
