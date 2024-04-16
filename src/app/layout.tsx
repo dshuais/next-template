@@ -2,12 +2,12 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-15 17:19:04
+ * @LastEditTime: 2024-04-16 11:08:05
  * @description: layout
  */
 import type { Metadata } from "next";
 // import { Inter } from "next/font/google";
-import "./globals.css";
+import "../asstes/styles/globals.css";
 
 // const inter = Inter({ subsets: ["latin"] });
 
