@@ -2,11 +2,14 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-16 17:32:39
+ * @LastEditTime: 2024-04-16 17:49:19
  * @description: layout
  */
 import type { Metadata } from "next";
 import "../asstes/styles/globals.css";
+import { Suspense } from "react";
+import { NavigationEvents } from "@/components/NavigationEvents";
+import Loading from "./loading";
 
 export const metadata: Metadata = {
   title: "Next App",
@@ -19,6 +22,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body>
         {children}
+
+        <Suspense fallback={<Loading />}>
+          <NavigationEvents />
+        </Suspense>
       </body>
     </html>
   )
