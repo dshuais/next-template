@@ -8,7 +8,7 @@
  */
 import Link from "next/link";
 
-export default function index() {
+export default function User() {
   return (
     <div>
       user index

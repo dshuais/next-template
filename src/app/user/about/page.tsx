@@ -2,14 +2,14 @@
  * @Author: dushuai
  * @Date: 2024-04-16 16:03:31
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-16 17:45:00
+ * @LastEditTime: 2024-04-16 18:39:04
  * @description: 心平气和
  */
 "use client"
 
 import { usePathname, useSearchParams } from "next/navigation"
 
-export default function page() {
+export default function UserAbout() {
 
   const pathname = usePathname()
   const searchParams = useSearchParams()
