@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-17 11:11:09
+ * @LastEditTime: 2024-04-17 15:39:23
  * @description: page
  */
 "use client"
@@ -12,6 +12,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { Icon } from '@iconify-icon/react'
+import { useAppStore } from "@/store";
+import { useShallow } from "zustand/react/shallow";
 
 export default function Home() {
 
@@ -23,8 +25,16 @@ export default function Home() {
 
   useEffect(() => {
     console.log('env', process.env.NEXT_PUBLIC_APP_ENV);
-  })
+  }, [])
 
+  const token = useAppStore(useShallow(state => state.token))
+  const setToken = useAppStore(state => state.SET_TOKEN)
+
+  const appStore = useAppStore()
+
+  useEffect(() => {
+    console.log('token', token);
+  }, [])
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-red-50">
@@ -46,6 +56,12 @@ export default function Home() {
       <Link href={'/user'}>user</Link>
 
       <div onClick={handleAbout}>user-about</div>
+
+      <div onClick={() => setToken('new_token')}>setToken</div>
+      <div>token: {token}</div>
+      <div onClick={() => appStore.SET_TOKEN('new_tokentokentoken')}>setToken</div>
+      <div>token: {appStore.token}</div>
+      <div onClick={() => appStore.RESET()}>reset</div>
 
     </main>
   )
