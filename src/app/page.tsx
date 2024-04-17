@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-16 17:39:35
+ * @LastEditTime: 2024-04-17 11:11:09
  * @description: page
  */
 "use client"
@@ -11,6 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { Icon } from '@iconify-icon/react'
 
 export default function Home() {
 
@@ -32,6 +33,14 @@ export default function Home() {
           Get started by editing&nbsp;
           <code className="font-mono font-bold">src/app/page.tsx</code>
         </p>
+      </div>
+
+      <div className='flex justify-center items-center my-4 border border-gray-400 w-fit px-2 rounded-md'>
+        <Icon icon="ph:gear-fill" className="text-xl mr-1" />
+        <Icon icon="mdi:github" className="text-xl mr-1" />
+        <Icon icon="simple-icons:juejin" className="text-xl mr-1" />
+        <Icon icon="mingcute:wechat-line" className="text-xl mr-1" />
+        设置
       </div>
 
       <Link href={'/user'}>user</Link>
