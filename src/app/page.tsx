@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-17 15:39:23
+ * @LastEditTime: 2024-04-17 17:02:16
  * @description: page
  */
 "use client"
@@ -60,6 +60,7 @@ export default function Home() {
       <div onClick={() => setToken('new_token')}>setToken</div>
       <div>token: {token}</div>
       <div onClick={() => appStore.SET_TOKEN('new_tokentokentoken')}>setToken</div>
+      <div onClick={() => appStore.SET_STATE({ key: 'token', val: 'new_token2' })}>setToken2</div>
       <div>token: {appStore.token}</div>
       <div onClick={() => appStore.RESET()}>reset</div>
 
