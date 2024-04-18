@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-17 17:02:16
+ * @LastEditTime: 2024-04-18 17:55:17
  * @description: page
  */
 "use client"
@@ -14,6 +14,8 @@ import { useEffect } from "react";
 import { Icon } from '@iconify-icon/react'
 import { useAppStore } from "@/store";
 import { useShallow } from "zustand/react/shallow";
+import { Button } from 'antd'
+
 
 export default function Home() {
 
@@ -63,6 +65,7 @@ export default function Home() {
       <div onClick={() => appStore.SET_STATE({ key: 'token', val: 'new_token2' })}>setToken2</div>
       <div>token: {appStore.token}</div>
       <div onClick={() => appStore.RESET()}>reset</div>
+      <Button type="primary">Button</Button>
 
     </main>
   )

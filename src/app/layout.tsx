@@ -2,14 +2,15 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-18 17:39:34
+ * @LastEditTime: 2024-04-18 17:56:30
  * @description: layout
  */
 import type { Metadata } from "next";
-import "../asstes/styles/globals.css";
 import { Suspense } from "react";
+import { AntdRegistry } from '@ant-design/nextjs-registry'
 import { NavigationEvents } from "@/components/NavigationEvents";
 import Loading from "./loading";
+import "../asstes/styles/globals.css";
 
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_APP_TITLE,
@@ -21,7 +22,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
-        {children}
+        {/* 避免首批没有样式 */}
+        <AntdRegistry>
+          {children}
+        </AntdRegistry>
 
         <Suspense fallback={<Loading />}>
           <NavigationEvents />
