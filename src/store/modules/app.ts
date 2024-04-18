@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-17 14:49:31
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-17 17:00:57
+ * @LastEditTime: 2024-04-18 09:52:57
  * @description: app store
  */
 import { StoreKey } from "@/common"
@@ -11,7 +11,6 @@ import { createJSONStorage, persist, devtools } from 'zustand/middleware'
 
 type Store = {
   token: string
-  a: number
   // ... other state properties
 }
 
@@ -25,13 +24,12 @@ type Actions = {
 
 // define the initial state
 const initialState = (): Store => ({
-  token: '',
-  a: 0
+  token: ''
 })
 
 /**
  * 当前store版本
- * 更改后需要手动修改并天机migrate逻辑
+ * 更改后需要手动修改并添加migrate逻辑
  */
 const APP_STORE_VERSION: number = 0.1
 
@@ -65,6 +63,7 @@ export const useAppStore = create<Store & Actions>()(
         storage: createJSONStorage(() => sessionStorage),
         version: APP_STORE_VERSION, // a migration will be triggered if the version in the storage mismatches this one
 
+        // migration logic
         migrate: (persistedState, version) => {
 
           const state = initialState()
