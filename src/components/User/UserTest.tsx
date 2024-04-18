@@ -3,10 +3,11 @@
 * @Author: dushuai
 * @Date: 2024-04-18 17:11:16
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-18 17:14:27
+ * @LastEditTime: 2024-04-18 17:30:13
 * @description: 心平气和
 */
 import { useSettings } from "@/store"
+import { formatDate } from "@/utils"
 
 export default function UserTest({ children }: { children: React.ReactNode }) {
 
@@ -16,7 +17,7 @@ export default function UserTest({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div>UserTest</div>
-      <div>updateTime: {updateTime}</div>
+      <div>updateTime: {formatDate(updateTime)}</div>
       <div>theme: {theme}</div>
       <div onClick={RESET}>reset</div>
       {children}

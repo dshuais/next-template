@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-18 12:28:06
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-18 17:21:25
+ * @LastEditTime: 2024-04-18 17:31:10
  * @description: 创建自定义store
  */
 import { StoreKey } from "@/common";
