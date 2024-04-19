@@ -2,11 +2,11 @@
  * @Author: dushuai
  * @Date: 2024-04-16 11:42:28
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-16 12:18:08
+ * @LastEditTime: 2024-04-19 17:57:03
  * @description: notFound 组件
  */
 import Link from 'next/link'
-import styles from './not-found.module.css'
+import styles from '~/asstes/styles/not-found.module.css'
 
 export default function notFound() {
 
