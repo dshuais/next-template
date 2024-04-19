@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-19 10:36:42
+ * @LastEditTime: 2024-04-19 14:49:49
  * @description: page
  */
 "use client"
@@ -16,6 +16,8 @@ import { useAppStore } from "@/store";
 import { useShallow } from "zustand/react/shallow";
 import { Button } from 'antd'
 import styled from 'styled-components'
+
+import Img10 from '~/asstes/images/img_10.png'
 
 /**
  * css in js
@@ -83,6 +85,12 @@ export default function Home() {
       <Button type="primary">Button</Button>
 
       <ButtonDiv>Button</ButtonDiv>
+
+      <Image src="https://files.dshuais.com/images/wallpaper/0.png" alt="wallpaper" width={100} height={200} priority />
+
+      <Image src={Img10} alt="本地图片" width={100} height={200} priority />
+
+      <Image src='/images/d.png' alt="本地图片" width={100} height={200} priority />
 
     </main>
   )
