@@ -2,11 +2,33 @@
  * @Author: dushuai
  * @Date: 2024-04-15 18:01:11
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-19 12:19:58
+ * @LastEditTime: 2024-04-19 15:38:24
  * @description: nextConfig
  */
 /** @type {import('next').NextConfig} */
+
+const isProd = process.env.NEXT_PUBLIC_APP_ENV === 'production'
+
+let assetPrefix = '/next'
+let distDir = '.next'
+
+if (isProd) {
+  assetPrefix = process.env.NEXT_PUBLIC_APP_RESOURCE_URL
+  distDir = '.next'
+}
+
 const nextConfig = {
+
+  assetPrefix,
+
+  distDir,
+
+  output: 'standalone', // 默认 standalone 表示使用next.js的内嵌式运行时; export 表示生成静态化文件
+
+  compress: true,
+
+  // 关闭严格模式 可避免页面渲染两次
+  // reactStrictMode: false,
 
   // 启用styledComponents
   compiler: {
