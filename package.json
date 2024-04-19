@@ -19,6 +19,7 @@
   "devDependencies": {
     "@ant-design/nextjs-registry": "^1.0.0",
     "@iconify-icon/react": "^2.1.0",
+    "@next/bundle-analyzer": "^14.2.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

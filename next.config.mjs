@@ -2,10 +2,19 @@
  * @Author: dushuai
  * @Date: 2024-04-15 18:01:11
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-19 15:38:24
+ * @LastEditTime: 2024-04-19 15:47:52
  * @description: nextConfig
  */
 /** @type {import('next').NextConfig} */
+
+import bundleAnalyzer from '@next/bundle-analyzer'
+
+// 用于分析 Next.js 应用打包后的文件大小（可选）
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+  openAnalyzer: true,
+  analyzerMode: 'static'
+})
 
 const isProd = process.env.NEXT_PUBLIC_APP_ENV === 'production'
 
@@ -47,4 +56,4 @@ const nextConfig = {
 
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);
