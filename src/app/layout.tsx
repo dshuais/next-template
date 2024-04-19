@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-18 17:56:30
+ * @LastEditTime: 2024-04-19 10:44:03
  * @description: layout
  */
 import type { Metadata } from "next";
@@ -22,7 +22,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
-        {/* 避免首批没有样式 */}
+        {/* 避免antd首屏没有样式 */}
         <AntdRegistry>
           {children}
         </AntdRegistry>

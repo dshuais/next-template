@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 7788",
     "build": "next build",
     "sit": "next build --mode sit",
-    "start": "next start",
+    "start": "next start -p 7788",
     "lint": "next lint"
   },
   "dependencies": {
@@ -25,6 +25,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.1",
     "postcss": "^8",
+    "styled-components": "^6.1.8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

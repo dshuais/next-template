@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-18 17:55:17
+ * @LastEditTime: 2024-04-19 10:36:42
  * @description: page
  */
 "use client"
@@ -15,7 +15,22 @@ import { Icon } from '@iconify-icon/react'
 import { useAppStore } from "@/store";
 import { useShallow } from "zustand/react/shallow";
 import { Button } from 'antd'
+import styled from 'styled-components'
 
+/**
+ * css in js
+ */
+const ButtonDiv = styled.div`
+  padding: 10px;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  transition: background-color 0.2s linear;
+  cursor: pointer;
+  &:hover {
+    background-color: blue;
+  }
+`
 
 export default function Home() {
 
@@ -66,6 +81,8 @@ export default function Home() {
       <div>token: {appStore.token}</div>
       <div onClick={() => appStore.RESET()}>reset</div>
       <Button type="primary">Button</Button>
+
+      <ButtonDiv>Button</ButtonDiv>
 
     </main>
   )
