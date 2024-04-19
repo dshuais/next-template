@@ -3,14 +3,23 @@
  * @Author: dushuai
  * @Date: 2024-04-16 14:41:04
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-18 17:15:12
+ * @LastEditTime: 2024-04-19 17:47:45
  * @description: test
  */
 "use client"
 
-import UserTest from "@/components/User/UserTest";
+// import UserTest from "@/components/User/UserTest";
 import { useSettings } from "@/store";
+import dynamic from "next/dynamic";
 import Link from "next/link";
+import { Spin } from 'antd'
+
+// 动态加载组件
+const UserTest = dynamic(() => import('~/components/User/UserTest'),
+  {
+    loading: () => <Spin /> // <div>Loading...</div>
+  }
+)
 
 export default function User() {
 

@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-15 18:01:11
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-19 15:47:52
+ * @LastEditTime: 2024-04-19 17:37:03
  * @description: nextConfig
  */
 /** @type {import('next').NextConfig} */
@@ -34,7 +34,7 @@ const nextConfig = {
 
   output: 'standalone', // 默认 standalone 表示使用next.js的内嵌式运行时; export 表示生成静态化文件
 
-  compress: true,
+  compress: true, // gzip
 
   // 关闭严格模式 可避免页面渲染两次
   // reactStrictMode: false,
