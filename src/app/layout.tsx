@@ -2,13 +2,14 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-19 10:44:03
+ * @LastEditTime: 2024-04-19 10:52:39
  * @description: layout
  */
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { AntdRegistry } from '@ant-design/nextjs-registry'
-import { NavigationEvents } from "@/components/NavigationEvents";
+import NavigationEvents from "@/components/NavigationEvents";
+import StyledComponentsRegistry from '@/lib/registry'
 import Loading from "./loading";
 import "../asstes/styles/globals.css";
 
@@ -24,7 +25,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         {/* 避免antd首屏没有样式 */}
         <AntdRegistry>
-          {children}
+          {/* 避免styled-components首屏没有样式 */}
+          <StyledComponentsRegistry>
+            {children}
+          </StyledComponentsRegistry>
         </AntdRegistry>
 
         <Suspense fallback={<Loading />}>

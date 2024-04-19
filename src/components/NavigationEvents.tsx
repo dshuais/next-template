@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-16 16:03:31
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-16 17:45:00
+ * @LastEditTime: 2024-04-19 10:51:27
  * @description: NavigationEvents
  */
 'use client'
@@ -10,7 +10,7 @@
 import { useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 
-export function NavigationEvents() {
+export default function NavigationEvents() {
 
   const pathname = usePathname()
   const searchParams = useSearchParams()
