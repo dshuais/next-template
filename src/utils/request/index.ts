@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-19 16:29:03
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-23 12:17:15
+ * @LastEditTime: 2024-04-23 14:12:23
  * @description: 封装request
  */
 import qs from 'qs'
@@ -42,7 +42,7 @@ class NextRequest {
     let queryParams = '' // url参数
     let requestPayload = '' // 请求体
     let headers: Record<string, any> = { // 请求头
-      ...header,
+      // ...header,
       Accept: 'application/json, text/plain, */*'
     }
     let config: Config = { // 缓存配置
@@ -76,6 +76,9 @@ class NextRequest {
         requestPayload = JSON.stringify(params!)
       }
     }
+
+    // 混入自定义的请求头
+    Object.assign(headers, header)
 
     return {
       url,

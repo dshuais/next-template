@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-23 11:33:51
+ * @LastEditTime: 2024-04-23 14:12:33
  * @description: page
  */
 "use client"
@@ -17,7 +17,7 @@ import { useShallow } from "zustand/react/shallow";
 import { Button } from 'antd'
 import qs from 'qs'
 import styled from 'styled-components'
-import { GetCaptcha } from '~/api'
+import { GetCaptcha, Login } from '~/api'
 
 import Img10 from '~/asstes/images/img_10.png'
 
@@ -56,15 +56,28 @@ export default function Home() {
   useEffect(() => {
     console.log('token', token);
 
-    const a = { a: 1, b: 5, c: { d: 6, e: { f: 8 } }, g: 9 }
+    // const a = { a: 1, b: 5, c: { d: 6, e: { f: 8 } }, g: 9 }
 
-    console.log('qs', qs.stringify(a));
+    // console.log('qs', qs.stringify(a));
 
-    GetCaptcha(a).then(res => {
-      console.log('res', res, res.code, res.data.captcha);
-    })
+    // GetCaptcha(a).then(res => {
+    //   console.log('res', res, res.code, res.data.captcha);
+    // })
+
+    // getHttp()
 
   }, [])
+
+  async function getHttp() {
+    const user = {
+      email: '1137896420@qq.com',
+      password: '123456'
+    }
+
+    const res = await Login(user)
+    console.log(res, res.data.loginId);
+
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-red-50">
