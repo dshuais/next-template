@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-15 18:01:11
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-23 11:20:35
+ * @LastEditTime: 2024-04-23 17:58:47
  * @description: nextConfig
  */
 /** @type {import('next').NextConfig} */
@@ -17,6 +17,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 })
 
 const isProd = process.env.NEXT_PUBLIC_APP_ENV === 'production'
+const isDev = process.env.NEXT_PUBLIC_APP_ENV === 'development'
 
 let assetPrefix = '/next'
 let distDir = '.next'
@@ -54,16 +55,20 @@ const nextConfig = {
     ]
   },
 
-  // 代理
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: `${process.env.NEXT_PUBLIC_APP_SERVE_URl}:path*`
-      }
-    ]
-  },
+}
 
-};
+if (isDev) {
+  nextConfig.rewrites = rewrites
+}
+
+// 代理
+async function rewrites() {
+  return [
+    {
+      source: '/api/:path*',
+      destination: `${process.env.NEXT_PUBLIC_APP_SERVE_URl}:path*`
+    }
+  ]
+}
 
 export default withBundleAnalyzer(nextConfig);
