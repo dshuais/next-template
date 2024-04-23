@@ -2,12 +2,13 @@
  * @Author: dushuai
  * @Date: 2024-04-23 14:36:27
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-23 15:34:10
+ * @LastEditTime: 2024-04-23 17:52:38
  * @description: 路由拦截 middleware 
  */
 import { NextResponse } from "next/server"
 import { NextRequest } from "next/server"
 import { useAppStore } from '~/store'
+
 
 /**
  * 所有路由 手动维护 暂未发现好的方式
@@ -28,7 +29,9 @@ export async function middleware(request: NextRequest) {
   if (routes.includes(pathname)) { // 路由拦截
     console.log('middleware', pathname);
 
-    const token = useAppStore.getState().token
+    const token = 'token' // useAppStore.getState().token
+
+    console.log('token', token, useAppStore.getState());
 
     /**
      * 一个基础的鉴权
@@ -44,7 +47,7 @@ export async function middleware(request: NextRequest) {
       return NextResponse.next()
     }
 
-  } else if (pathname.startsWith('/api')) { // 接口拦截
+  } else if (pathname.startsWith('/api')) { // 接口拦截 前提是 /api 开头
     console.log('接口拦截', pathname);
   }
 
