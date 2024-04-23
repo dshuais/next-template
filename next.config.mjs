@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-15 18:01:11
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-19 17:37:03
+ * @LastEditTime: 2024-04-23 11:20:35
  * @description: nextConfig
  */
 /** @type {import('next').NextConfig} */
@@ -52,7 +52,17 @@ const nextConfig = {
         hostname: 'files.dshuais.com',
       }
     ]
-  }
+  },
+
+  // 代理
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: `${process.env.NEXT_PUBLIC_APP_SERVE_URl}:path*`
+      }
+    ]
+  },
 
 };
 

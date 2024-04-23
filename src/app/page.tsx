@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-19 14:49:49
+ * @LastEditTime: 2024-04-23 11:33:51
  * @description: page
  */
 "use client"
@@ -15,7 +15,9 @@ import { Icon } from '@iconify-icon/react'
 import { useAppStore } from "@/store";
 import { useShallow } from "zustand/react/shallow";
 import { Button } from 'antd'
+import qs from 'qs'
 import styled from 'styled-components'
+import { GetCaptcha } from '~/api'
 
 import Img10 from '~/asstes/images/img_10.png'
 
@@ -53,6 +55,15 @@ export default function Home() {
 
   useEffect(() => {
     console.log('token', token);
+
+    const a = { a: 1, b: 5, c: { d: 6, e: { f: 8 } }, g: 9 }
+
+    console.log('qs', qs.stringify(a));
+
+    GetCaptcha(a).then(res => {
+      console.log('res', res, res.code, res.data.captcha);
+    })
+
   }, [])
 
   return (
