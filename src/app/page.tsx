@@ -2,82 +2,18 @@
  * @Author: dushuai
  * @Date: 2024-04-15 17:10:01
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-23 14:12:33
+ * @LastEditTime: 2024-04-23 14:50:02
  * @description: page
  */
-"use client"
-
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { Icon } from '@iconify-icon/react'
-import { useAppStore } from "@/store";
-import { useShallow } from "zustand/react/shallow";
 import { Button } from 'antd'
-import qs from 'qs'
-import styled from 'styled-components'
-import { GetCaptcha, Login } from '~/api'
+import HomeHandle from "@/components/Home/Home";
 
 import Img10 from '~/asstes/images/img_10.png'
 
-/**
- * css in js
- */
-const ButtonDiv = styled.div`
-  padding: 10px;
-  background-color: red;
-  color: white;
-  border-radius: 10px;
-  transition: background-color 0.2s linear;
-  cursor: pointer;
-  &:hover {
-    background-color: blue;
-  }
-`
-
 export default function Home() {
-
-  const router = useRouter()
-
-  const handleAbout = () => {
-    router.push('/user/about?a=123')
-  }
-
-  useEffect(() => {
-    console.log('env', process.env.NEXT_PUBLIC_APP_ENV);
-  }, [])
-
-  const token = useAppStore(useShallow(state => state.token))
-  const setToken = useAppStore(state => state.SET_TOKEN)
-
-  const appStore = useAppStore()
-
-  useEffect(() => {
-    console.log('token', token);
-
-    // const a = { a: 1, b: 5, c: { d: 6, e: { f: 8 } }, g: 9 }
-
-    // console.log('qs', qs.stringify(a));
-
-    // GetCaptcha(a).then(res => {
-    //   console.log('res', res, res.code, res.data.captcha);
-    // })
-
-    // getHttp()
-
-  }, [])
-
-  async function getHttp() {
-    const user = {
-      email: '1137896420@qq.com',
-      password: '123456'
-    }
-
-    const res = await Login(user)
-    console.log(res, res.data.loginId);
-
-  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-red-50">
@@ -98,17 +34,9 @@ export default function Home() {
 
       <Link href={'/user'}>user</Link>
 
-      <div onClick={handleAbout}>user-about</div>
+      <HomeHandle />
 
-      <div onClick={() => setToken('new_token')}>setToken</div>
-      <div>token: {token}</div>
-      <div onClick={() => appStore.SET_TOKEN('new_tokentokentoken')}>setToken</div>
-      <div onClick={() => appStore.SET_STATE({ key: 'token', val: 'new_token2' })}>setToken2</div>
-      <div>token: {appStore.token}</div>
-      <div onClick={() => appStore.RESET()}>reset</div>
       <Button type="primary">Button</Button>
-
-      <ButtonDiv>Button</ButtonDiv>
 
       <Image src="https://files.dshuais.com/images/wallpaper/0.png" alt="wallpaper" width={100} height={200} priority />
 
