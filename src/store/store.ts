@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2024-04-18 12:28:06
  * @LastEditors: dushuai
- * @LastEditTime: 2024-04-18 17:31:10
+ * @LastEditTime: 2024-04-28 16:44:16
  * @description: 创建自定义store
  */
 import { StoreKey } from "@/common";
@@ -26,7 +26,7 @@ export type MakeUpdater<T> = {
   RESET: () => void
 }
 
-export type Methods<T, M> = (set: SetStoreState<T>, get: () => T & MakeUpdater<T>) => M
+export type Methods<T, M> = (set: SetStoreState<T>, get: () => M & T & MakeUpdater<T>) => M
 
 /**
  * 创建store
