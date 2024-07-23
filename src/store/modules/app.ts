@@ -5,9 +5,10 @@
  * @LastEditTime: 2024-04-18 09:52:57
  * @description: app store
  */
-import { StoreKey } from "@/common"
+import { StoreKey, TOKEN_KEY } from "@/common"
 import { create } from "zustand"
 import { createJSONStorage, persist, devtools } from 'zustand/middleware'
+import jsCookie from 'js-cookie'
 
 type Store = {
   token: string
@@ -44,17 +45,18 @@ export const useAppStore = create<Store & Actions>()(
         },
 
         SET_TOKEN(token) {
-          // set({ token })
-          set(state => ({ token }))
+          set({ token })
+          jsCookie.set(TOKEN_KEY, token)
         },
 
         REMOVE_TOKEN() {
           set({ token: '' })
-          // set(state => ({ token: '' }))
+          jsCookie.remove(TOKEN_KEY)
         },
 
         RESET() {
           set(initialState())
+          jsCookie.remove(TOKEN_KEY)
         }
 
       }),

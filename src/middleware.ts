@@ -7,8 +7,7 @@
  */
 import { NextResponse } from "next/server"
 import { NextRequest } from "next/server"
-import { useAppStore } from '~/store'
-
+import { TOKEN_KEY } from "./common"
 
 /**
  * 所有路由 手动维护 暂未发现好的方式
@@ -27,11 +26,9 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   if (routes.includes(pathname)) { // 路由拦截
-    console.log('middleware', pathname);
+    // console.log('pathname:>> ', pathname);
 
-    const token = 'token' // useAppStore.getState().token
-
-    console.log('token', token, useAppStore.getState());
+    const token = request.cookies.get(TOKEN_KEY);
 
     /**
      * 一个基础的鉴权
@@ -48,7 +45,7 @@ export async function middleware(request: NextRequest) {
     }
 
   } else if (pathname.startsWith('/api')) { // 接口拦截 前提是 /api 开头
-    console.log('接口拦截', pathname);
+    console.log('接口拦截:>> ', pathname);
   }
 
   return NextResponse.next()

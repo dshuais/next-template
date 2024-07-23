@@ -8,6 +8,8 @@
 
 export const APP_KEY = 'next-template'
 
+export const TOKEN_KEY = `${APP_KEY}-token`
+
 export enum StoreKey {
   APP = `app-store-${APP_KEY}`,
   SETTINGS = `settings-store-${APP_KEY}`
