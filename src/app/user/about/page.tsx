@@ -5,18 +5,18 @@
  * @LastEditTime: 2024-04-16 18:39:04
  * @description: 心平气和
  */
-"use client"
+'use client';
 
-import { usePathname, useSearchParams } from "next/navigation"
+import { usePathname, useSearchParams } from 'next/navigation';
 
 export default function UserAbout() {
 
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   console.log(pathname, searchParams.toString());
 
   return (
     <div>user about</div>
-  )
+  );
 }

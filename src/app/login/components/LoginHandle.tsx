@@ -6,12 +6,12 @@
  * @LastEditTime: 2024-04-23 17:48:19
  * @description: login
  */
-'use client'
+'use client';
 
-import { useAppStore } from "@/store"
-import { message } from "antd"
-import { useRouter } from "next/navigation"
-import styled from "styled-components"
+import { useAppStore } from '@/store';
+import { message } from 'antd';
+import { useRouter } from 'next/navigation';
+import styled from 'styled-components';
 
 const ButtonCustom = styled.button`
   padding: 10px 20px;
@@ -24,23 +24,23 @@ const ButtonCustom = styled.button`
   &:hover {
     background-color: #0056b3;
   }
-`
+`;
 
 export default function LoginHandle() {
 
-  const SET_TOKEN = useAppStore(state => state.SET_TOKEN)
+  const SET_TOKEN = useAppStore(state => state.SET_TOKEN);
 
-  const router = useRouter()
+  const router = useRouter();
 
   function login() {
-    SET_TOKEN('new_token')
-    message.success('登陆成功')
-    router.replace('/')
+    SET_TOKEN('new_token');
+    message.success('登陆成功');
+    router.replace('/');
   }
 
   return (
     <div>
       <ButtonCustom onClick={login}>登陆</ButtonCustom>
     </div>
-  )
+  );
 }

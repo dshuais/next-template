@@ -7,24 +7,24 @@
  */
 /** @type {import('next').NextConfig} */
 
-import bundleAnalyzer from '@next/bundle-analyzer'
+import bundleAnalyzer from '@next/bundle-analyzer';
 
 // 用于分析 Next.js 应用打包后的文件大小（可选）
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
   openAnalyzer: true,
   analyzerMode: 'static'
-})
+});
 
-const isProd = process.env.NEXT_PUBLIC_APP_ENV === 'production'
-const isDev = process.env.NEXT_PUBLIC_APP_ENV === 'development'
+const isProd = process.env.NEXT_PUBLIC_APP_ENV === 'production';
+const isDev = process.env.NEXT_PUBLIC_APP_ENV === 'development';
 
-let assetPrefix = '/next'
-let distDir = '.next'
+let assetPrefix = '/next';
+let distDir = '.next';
 
-if (isProd) {
-  assetPrefix = process.env.NEXT_PUBLIC_APP_RESOURCE_URL
-  distDir = '.next'
+if(isProd) {
+  assetPrefix = process.env.NEXT_PUBLIC_APP_RESOURCE_URL;
+  distDir = '.next';
 }
 
 const nextConfig = {
@@ -50,15 +50,15 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'files.dshuais.com',
+        hostname: 'files.dshuais.com'
       }
     ]
-  },
+  }
 
-}
+};
 
-if (isDev) {
-  nextConfig.rewrites = rewrites
+if(isDev) {
+  nextConfig.rewrites = rewrites;
 }
 
 // 代理
@@ -68,7 +68,7 @@ async function rewrites() {
       source: '/api/:path*',
       destination: `${process.env.NEXT_PUBLIC_APP_SERVE_URl}:path*`
     }
-  ]
+  ];
 }
 
 export default withBundleAnalyzer(nextConfig);

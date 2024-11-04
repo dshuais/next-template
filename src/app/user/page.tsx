@@ -6,24 +6,25 @@
  * @LastEditTime: 2024-04-19 17:47:45
  * @description: test
  */
-"use client"
+'use client';
 
 // import UserTest from "@/components/User/UserTest";
-import { useSettings } from "@/store";
-import dynamic from "next/dynamic";
-import Link from "next/link";
-import { Spin } from 'antd'
+import { useSettings } from '@/store';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { Spin } from 'antd';
 
 // 动态加载组件
-const UserTest = dynamic(() => import('~/components/User/UserTest'),
+const UserTest = dynamic(
+  () => import('~/components/User/UserTest'),
   {
     loading: () => <Spin /> // <div>Loading...</div>
   }
-)
+);
 
 export default function User() {
 
-  const { theme, SET_THEME, SET_STATE, RESET, ...settings } = useSettings()
+  const { theme, SET_THEME, SET_STATE, RESET, ...settings } = useSettings();
 
   return (
     <div>
@@ -47,5 +48,5 @@ export default function User() {
         <div>user test slot</div>
       </UserTest>
     </div>
-  )
+  );
 }

@@ -5,10 +5,10 @@
  * @LastEditTime: 2024-04-23 14:12:23
  * @description: 封装request
  */
-import qs from 'qs'
-import { useAppStore } from "@/store"
-import ErrorCodeHandle from './requestCode'
-import { message } from 'antd'
+import qs from 'qs';
+import { useAppStore } from '@/store';
+import ErrorCodeHandle from './requestCode';
+import { message } from 'antd';
 
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 
@@ -25,10 +25,10 @@ type Props = {
 
 type Config = { next: { revalidate: number } } | { cache: 'no-store' } | { cache: 'force-cache' }
 
-/** 
+/**
  * 不需要处理异常白名单
  */
-const whiteList: string[] = ['/qiniu/upload/uptoken']
+const whiteList: string[] = ['/qiniu/upload/uptoken'];
 
 /**
  * 封装request fetch
@@ -39,46 +39,46 @@ class NextRequest {
    * 请求拦截
    */
   interceptorsRequest({ url, method, params, cacheTime, headers: header }: Props) {
-    let queryParams = '' // url参数
-    let requestPayload = '' // 请求体
-    let headers: Record<string, any> = { // 请求头
+    let queryParams = ''; // url参数
+    let requestPayload = ''; // 请求体
+    const headers: Record<string, any> = { // 请求头
       // ...header,
       Accept: 'application/json, text/plain, */*'
-    }
+    };
     let config: Config = { // 缓存配置
       cache: 'force-cache'
-    }
+    };
 
     // 添加token
     // const token = useAppStore(state => state.token)
-    const token = useAppStore.getState().token
+    const token = useAppStore.getState().token;
 
-    if (token) {
-      headers['token'] = token
+    if(token) {
+      headers['token'] = token;
     }
 
     // 处理请求缓存
-    if (cacheTime) {
-      config = cacheTime === 0 ? { cache: 'no-store' } : { next: { revalidate: cacheTime } }
+    if(cacheTime) {
+      config = cacheTime === 0 ? { cache: 'no-store' } : { next: { revalidate: cacheTime }};
     }
 
-    const queryList = ['GET', 'DELETE']
+    const queryList = ['GET', 'DELETE'];
     // 处理url参数
-    if (queryList.includes(method)) {
+    if(queryList.includes(method)) {
       // fetch对GET请求等，不支持将参数传在body上，只能拼接url
-      queryParams = qs.stringify(params!)
-      url += queryParams ? `?${queryParams}` : ''
+      queryParams = qs.stringify(params!);
+      url += queryParams ? `?${queryParams}` : '';
     } else {
       // 非form-data传输JSON数据格式
-      const type = Object.prototype.toString.call(params!)
-      if (!['[object FormData]', '[object URLSearchParams]'].includes(type)) {
-        headers['Content-Type'] = 'application/json'
-        requestPayload = JSON.stringify(params!)
+      const type = Object.prototype.toString.call(params!);
+      if(!['[object FormData]', '[object URLSearchParams]'].includes(type)) {
+        headers['Content-Type'] = 'application/json';
+        requestPayload = JSON.stringify(params!);
       }
     }
 
     // 混入自定义的请求头
-    Object.assign(headers, header)
+    Object.assign(headers, header);
 
     return {
       url,
@@ -88,57 +88,58 @@ class NextRequest {
         body: queryList.includes(method) ? undefined : requestPayload,
         ...config
       }
-    }
+    };
   }
 
   /**
    * 响应拦截
    */
   interceptorsResponse<T>(res: Response): Promise<Res.ResponseRes<T>> {
+    // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
-      const reqUrl = res.url
+      const reqUrl = res.url;
 
-      if (res.ok) {
-        const response = await res.json()
+      if(res.ok) {
+        const response = await res.json();
 
-        if (response.code === 200) {
-          return resolve(response)
+        if(response.code === 200) {
+          return resolve(response);
         } else {
           /**
            * 处理错误响应
            */
-          const url = reqUrl.split(process.env.NEXT_PUBLIC_APP_BASE_URL)[1].split('?')[0]
+          const url = reqUrl.split(process.env.NEXT_PUBLIC_APP_BASE_URL)[1].split('?')[0];
 
-          if (whiteList.some(e => e.match(url))) {
-            console.log('接口通过白名单，不需要异常处理url:>> ', url)
+          if(whiteList.some(e => e.match(url))) {
+            console.log('接口通过白名单，不需要异常处理url:>> ', url);
           } else {
-            ErrorCodeHandle(url, response)
+            ErrorCodeHandle(url, response);
           }
 
-          return Promise.reject(response)
+          return Promise.reject(response);
         }
 
       } else {
         res.clone().text().then(text => {
           try {
-            const err = JSON.parse(text)
-            message.error(err || '请求失败')
-            return reject({ msg: err || '请求失败', reqUrl })
+            const err = JSON.parse(text);
+            message.error(err || '请求失败');
+            return reject({ msg: err || '请求失败', reqUrl });
 
-          } catch (error) {
-            message.error(text || '请求失败')
-            return reject({ msg: text || '请求失败', reqUrl })
+          } catch(error) {
+            message.error(text || '请求失败');
+            return reject({ msg: text || '请求失败', reqUrl });
 
           }
-        })
+        });
       }
-    })
+    });
   }
 
   /**
    * 处理请求
-   * @param Props 
-   * @returns 
+   * @param Props
+   * @returns
    */
   async request<T>({ url = '', method, params = {}, headers }: Props): Promise<Res.ResponseRes<T>> {
     const req = this.interceptorsRequest({
@@ -147,17 +148,17 @@ class NextRequest {
       params: params.params,
       cacheTime: params.cacheTime,
       headers
-    })
+    });
 
-    const res = await fetch(req.url, req.options)
+    const res = await fetch(req.url, req.options);
 
-    return this.interceptorsResponse<T>(res)
+    return this.interceptorsResponse<T>(res);
   }
 
   /**
    * get
-   * @param url 
-   * @param params 
+   * @param url
+   * @param params
    * @param cacheTime 缓存时间，单位为s。默认强缓存，0为不缓存
    * @returns Promise<T>
    */
@@ -166,13 +167,13 @@ class NextRequest {
       url,
       method: 'GET',
       params: { params, cacheTime }
-    })
+    });
   }
 
   /**
    * post 表单格式
-   * @param url 
-   * @param params 
+   * @param url
+   * @param params
    * @param cacheTime 缓存时间，单位为s。默认强缓存，0为不缓存
    * @returns Promise<T>
    */
@@ -182,13 +183,13 @@ class NextRequest {
       method: 'POST',
       params: { params: qs.stringify(params), cacheTime },
       headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' }
-    })
+    });
   }
 
   /**
    * post json格式
-   * @param url 
-   * @param params 
+   * @param url
+   * @param params
    * @param cacheTime 缓存时间，单位为s。默认强缓存，0为不缓存
    * @returns Promise<T>
    */
@@ -197,13 +198,13 @@ class NextRequest {
       url,
       method: 'POST',
       params: { params, cacheTime }
-    })
+    });
   }
 
   /**
    * put
-   * @param url 
-   * @param params 
+   * @param url
+   * @param params
    * @param cacheTime 缓存时间，单位为s。默认强缓存，0为不缓存
    * @returns Promise<T>
    */
@@ -212,13 +213,13 @@ class NextRequest {
       url,
       method: 'PUT',
       params: { params, cacheTime }
-    })
+    });
   }
 
   /**
    * delete
-   * @param url 
-   * @param params 
+   * @param url
+   * @param params
    * @param cacheTime 缓存时间，单位为s。默认强缓存，0为不缓存
    * @returns Promise<T>
    */
@@ -227,13 +228,13 @@ class NextRequest {
       url,
       method: 'DELETE',
       params: { params, cacheTime }
-    })
+    });
   }
 
   /**
    * patch
-   * @param url 
-   * @param params 
+   * @param url
+   * @param params
    * @param cacheTime 缓存时间，单位为s。默认强缓存，0为不缓存
    * @returns Promise<T>
    */
@@ -242,17 +243,16 @@ class NextRequest {
       url,
       method: 'PATCH',
       params: { params, cacheTime }
-    })
+    });
   }
-
 
 }
 
 /**
  * 导出fetch
  */
-const request = new NextRequest()
+const request = new NextRequest();
 
-export default request
+export default request;
 
-export { NextRequest }
+export { NextRequest };

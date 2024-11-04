@@ -5,15 +5,15 @@
  * @LastEditTime: 2024-04-23 15:14:31
  * @description: Home 组件
  */
-'use client'
+'use client';
 
-import { useAppStore } from "@/store";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { useShallow } from "zustand/react/shallow";
-import { Icon } from '@iconify-icon/react'
-import { GetCaptcha, Login } from '~/api'
-import styled from 'styled-components'
+import { useAppStore } from '@/store';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { useShallow } from 'zustand/react/shallow';
+import { Icon } from '@iconify-icon/react';
+import { Login } from '~/api';
+import styled from 'styled-components';
 
 /**
  * css in js
@@ -29,25 +29,25 @@ const ButtonDiv = styled.div`
   &:hover {
     background-color: blue;
   }
-`
+`;
 
 export default function Home() {
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleAbout = () => {
-    router.push('/user/about?a=123')
-  }
+    router.push('/user/about?a=123');
+  };
 
-  const token = useAppStore(useShallow(state => state.token))
+  const token = useAppStore(useShallow(state => state.token));
 
-  const setToken = useAppStore(state => state.SET_TOKEN)
+  const setToken = useAppStore(state => state.SET_TOKEN);
 
-  const appStore = useAppStore()
+  const appStore = useAppStore();
 
   useEffect(() => {
     console.log('env', process.env.NEXT_PUBLIC_APP_ENV);
-  }, [])
+  }, []);
 
   async function getHttp() {
     // const a = { a: 1, b: 5, c: { d: 6, e: { f: 8 } }, g: 9 }
@@ -59,16 +59,16 @@ export default function Home() {
     const user = {
       email: '1137896420@qq.com',
       password: '123456'
-    }
+    };
 
-    const res = await Login(user)
+    const res = await Login(user);
     console.log(res, res.data.loginId);
 
   }
 
   return (
     <div className="text-center">
-      <div className='flex justify-center items-center my-4 border border-gray-400 w-fit px-2 rounded-md'>
+      <div className="flex justify-center items-center my-4 border border-gray-400 w-fit px-2 rounded-md">
         <Icon icon="ph:gear-fill" className="text-xl mr-1" />
         <Icon icon="mdi:github" className="text-xl mr-1" />
         <Icon icon="simple-icons:juejin" className="text-xl mr-1" />
@@ -88,5 +88,5 @@ export default function Home() {
       <ButtonDiv onClick={getHttp}>Button</ButtonDiv>
 
     </div>
-  )
+  );
 }

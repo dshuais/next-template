@@ -6,9 +6,9 @@
  * @description: 枚举文件
  */
 
-export const APP_KEY = 'next-template'
+export const APP_KEY = 'next-template';
 
-export const TOKEN_KEY = `${APP_KEY}-token`
+export const TOKEN_KEY = `${APP_KEY}-token`;
 
 export enum StoreKey {
   APP = `app-store-${APP_KEY}`,

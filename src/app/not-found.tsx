@@ -5,17 +5,17 @@
  * @LastEditTime: 2024-04-19 17:57:03
  * @description: notFound 组件
  */
-import Link from 'next/link'
-import styles from '~/asstes/styles/not-found.module.css'
+import Link from 'next/link';
+import styles from '~/asstes/styles/not-found.module.css';
 
 export default function notFound() {
 
-  const four = `${styles.stamp} ${styles.four} ${styles.div}`
+  const four = `${styles.stamp} ${styles.four} ${styles.div}`;
 
-  const zero = `${styles.stamp} ${styles.zero} ${styles.div}`
+  const zero = `${styles.stamp} ${styles.zero} ${styles.div}`;
 
   function getParentName(name: string) {
-    return `${styles[name]} ${styles.div}`
+    return `${styles[name]} ${styles.div}`;
   }
 
   return (
@@ -24,7 +24,7 @@ export default function notFound() {
         <h1 className={styles['text-oops']}>Oops!</h1>
         <p className={styles['text-sorry']}>Sorry, an unexpected error has occurred.</p>
         <div>Page not found!</div>
-        <Link href="/" className={styles.btn} >Go Home</Link>
+        <Link href="/" className={styles.btn}>Go Home</Link>
       </div>
 
       <div className={getParentName('rail')}>
@@ -52,15 +52,15 @@ export default function notFound() {
       <div className={getParentName('world')}>
         <div className={getParentName('forward')}>
           <div className={getParentName('box')}>
-            <div className={getParentName('wall')}></div>
-            <div className={getParentName('wall')}></div>
-            <div className={getParentName('wall')}></div>
-            <div className={getParentName('wall')}></div>
-            <div className={getParentName('wall')}></div>
-            <div className={getParentName('wall')}></div>
+            <div className={getParentName('wall')} />
+            <div className={getParentName('wall')} />
+            <div className={getParentName('wall')} />
+            <div className={getParentName('wall')} />
+            <div className={getParentName('wall')} />
+            <div className={getParentName('wall')} />
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

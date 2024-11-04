@@ -5,7 +5,7 @@
  * @LastEditTime: 2024-04-23 17:56:17
  * @description: Login
  */
-import LoginHandle from "./components/LoginHandle";
+import LoginHandle from './components/LoginHandle';
 
 export default function Login() {
 
@@ -14,5 +14,5 @@ export default function Login() {
       login
       <LoginHandle />
     </div>
-  )
+  );
 }

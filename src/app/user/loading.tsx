@@ -5,13 +5,13 @@
  * @LastEditTime: 2024-04-19 17:56:18
  * @description: loading 组件
  */
-import styles from "~/asstes/styles/loading.module.css"
+import styles from '~/asstes/styles/loading.module.css';
 
 export default function Loading() {
 
   return (
     <div className={styles['loading-two']}>
-      <div className={styles['loader-two']}></div>
+      <div className={styles['loader-two']} />
     </div>
-  )
+  );
 }
