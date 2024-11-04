@@ -10,7 +10,7 @@
 
 一个自用的 React Next 项目模板，主要为了减少每次项目开发前的重复操作。主要采用 React + TypeScript + Tailwind css + Zustand + Ant Design 等常用技术栈和常用库构建。
 
-> 预览地址：[https://react-template-ds.netlify.app](https://react-template-ds.netlify.app/)
+> 预览地址：[https://next-template-ds.netlify.app](https://next-template-ds.netlify.app/)
 
 ## 主要功能
 

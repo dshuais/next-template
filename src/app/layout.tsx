@@ -5,12 +5,14 @@
  * @LastEditTime: 2024-04-19 10:52:39
  * @description: layout
  */
-import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import type { Metadata } from 'next';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+
 import NavigationEvents from '@/components/NavigationEvents';
 import StyledComponentsRegistry from '@/lib/registry';
 import Loading from './loading';
+
 import '../asstes/styles/globals.css';
 
 export const metadata: Metadata = {

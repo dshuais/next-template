@@ -12,10 +12,10 @@ import styles from '~/asstes/styles/loading.module.css';
 
 export default function Loading() {
 
-  const [temp] = useState('two');
+  const [temp] = useState(TEMP.ONE);
 
   const Component = useMemo(() => {
-    return temp === 'one' ? LoadingOne : LoadingTwo;
+    return temp === TEMP.ONE ? LoadingOne : LoadingTwo;
   }, []);
 
   return (
@@ -45,3 +45,8 @@ function LoadingTwo() {
     </div>
   );
 }
+
+const TEMP = {
+  ONE: 'one',
+  TWO: 'two'
+};
