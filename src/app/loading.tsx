@@ -5,6 +5,8 @@
  * @LastEditTime: 2024-04-19 17:55:46
  * @description: loading 组件
  */
+'use client';
+
 import { useMemo, useState } from 'react';
 import styles from '~/asstes/styles/loading.module.css';
 

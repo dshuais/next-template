@@ -8,15 +8,12 @@
 'use client';
 
 import { useEffect } from 'react';
-import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import { useAppStore } from '@/store';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 export default function NavigationEvents() {
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const router = useRouter();
-  const { token } = useAppStore(state => state);
 
   useEffect(() => {
     const url = `${pathname}${searchParams.size > 0 ? `?${searchParams}` : ''}`;
@@ -24,12 +21,6 @@ export default function NavigationEvents() {
     // You can now use the current URL
     // ...
   }, [pathname, searchParams]);
-
-  useEffect(() => {
-    if(!token) {
-      router.replace('/login');
-    }
-  }, [router, token]);
 
   return null;
 }

@@ -7,16 +7,15 @@
  */
 import Image from 'next/image';
 import Link from 'next/link';
-import { Icon } from '@iconify-icon/react';
 import { Button } from 'antd';
-import HomeHandle from '@/components/Home/Home';
+import { Icon } from '@iconify-icon/react';
 
 import Img10 from '~/asstes/images/img_10.png';
 
 export default function Home() {
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-red-50">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
@@ -32,13 +31,11 @@ export default function Home() {
         设置
       </div>
 
+      <div className="w-12 h-12 bg-red-500" />
+
       <Link href={'/user'}>user</Link>
 
-      <HomeHandle />
-
       <Button type="primary">Button</Button>
-
-      <Image src="https://files.dshuais.com/images/wallpaper/0.png" alt="wallpaper" width={100} height={200} priority />
 
       <Image src={Img10} alt="本地图片" width={100} height={200} priority />
 

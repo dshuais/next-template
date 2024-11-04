@@ -7,20 +7,19 @@
  */
 
 interface Window {
-  mozRequestAnimationFrame: Function,
+  mozRequestAnimationFrame: () => void,
 
-  webkitRequestAnimationFrame: Function,
+  webkitRequestAnimationFrame: () => void,
 
-  msRequestAnimationFrame: Function,
+  msRequestAnimationFrame: () => void,
 
-  mozCancelAnimationFrame: Function
+  mozCancelAnimationFrame: () => void
 }
 
 /**
  * App内数据类型
  */
 declare namespace App {
-
 
 }
 

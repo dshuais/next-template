@@ -12,6 +12,7 @@
   "dependencies": {
     "ahooks": "^3.8.0",
     "antd": "^5.16.2",
+    "lodash-es": "^4.17.21",
     "next": "14.2.1",
     "react": "^18",
     "react-dom": "^18",
@@ -22,6 +23,7 @@
     "@iconify-icon/react": "^2.1.0",
     "@next/bundle-analyzer": "^14.2.2",
     "@types/js-cookie": "^3.0.6",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^20",
     "@types/qs": "^6.9.15",
     "@types/react": "^18",

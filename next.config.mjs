@@ -65,7 +65,7 @@ if(isDev) {
 async function rewrites() {
   return [
     {
-      source: '/api/:path*',
+      source: `${process.env.NEXT_PUBLIC_APP_BASE_URL}:path*`,
       destination: `${process.env.NEXT_PUBLIC_APP_SERVE_URl}:path*`
     }
   ];

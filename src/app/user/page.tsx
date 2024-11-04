@@ -16,7 +16,7 @@ import { Spin } from 'antd';
 
 // 动态加载组件
 const UserTest = dynamic(
-  () => import('~/components/User/UserTest'),
+  () => import('./users/components/UserTest'),
   {
     loading: () => <Spin /> // <div>Loading...</div>
   }
