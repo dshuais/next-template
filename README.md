@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!--
+ * @Author: dushuai
+ * @Date: 2024-03-29 12:30:24
+ * @LastEditors: dushuai
+ * @LastEditTime: 2024-04-28 15:36:13
+ * @description: readme
+-->
 
-## Getting Started
+# React-Template
 
-First, run the development server:
+一个自用的 React Next 项目模板，主要为了减少每次项目开发前的重复操作。主要采用 React + TypeScript + Tailwind css + Zustand + Ant Design 等常用技术栈和常用库构建。
+
+> 预览地址：[https://react-template-ds.netlify.app](https://react-template-ds.netlify.app/)
+
+## 主要功能
+
+<!-- - [x] 动态路由最佳实践 -->
+- [x] 完善的 Axios
+- [x] 区分环境变量
+- [x] Zustand 状态管理仓库的最佳食用
+- [x] Svg To Component
+
+## 安装
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm create keepdesign
+
+# 选择 next-template
+
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 运行
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 打包
 
-## Learn More
+```bash
+pnpm sit
 
-To learn more about Next.js, take a look at the following resources:
+# or
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+pnpm prod
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+`
 
-## Deploy on Vercel
+## 技术栈
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+主要采用 React + TypeScript + Tailwind css + Zustand + Ant Design 等常用技术栈和常用库构建。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [React](https://react.dev/)
+- [Tailwindcss](https://www.tailwindcss.cn/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
+- [Ant Design](https://ant.design/index-cn/)
